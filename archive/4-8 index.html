@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <title>Vue Basics</title>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <style>
+            .one { color: green;}
+            .two { text-decoration: line-through;}
+        </style>
+    </head>
+    <body>
+    
+        <h1>Vue Basics</h1>
+        <div id="app">
+            <h2>{{ title }}</h2>
+            <p>{{ greet('evening') }}</p>
+            <a :href="url">YouTube</a> <!-- : = shorthand for v-bind: -->
+            <div :class="classes">Classes from Instance</div>
+            <input type="text" :value="name1 + name2">
+        </div>
+
+        <script src="app.js"></script>
+    </body>
+</html>

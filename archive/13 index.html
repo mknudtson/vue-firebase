@@ -1,0 +1,36 @@
+<html>
+    <head>
+        <title>Vue Basics</title>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <style>
+            .canvas {
+                width: 300px;
+                height: 300px;
+                margin-top: 20px;
+                background-color: green;
+            };
+        </style>
+    </head>
+    <body>
+    
+        <h1>Vue Basics</h1>
+        <div id="app">
+            <h2>{{ title }}</h2>
+            <!-- event modifiers - key modifiers -->
+            <button @click.alt="logMessage">alt-click me</button> <!-- only listen to click if alt key is pressed/held down during click -->
+            <!-- works for shift, doesn't work for b, doesn't work for 1... -->
+            <!-- see vue js documentation > event handling > event modifiers -->
+            <button @click.shift="logMessage">shift-click me</button>
+            <!-- not sure how this is useful -->
+            
+            <!-- event modifiers - pure modifiers -->
+            <a href="http://www.google.com" @click.prevent="logMessage">Google</a>
+            <!-- prevent default action (of anchor tag), i.e. click takes to another website -->
+            <!-- why would you not just use a different element? you probably would, this is just a simple example -->
+            <!-- perhaps in a conditional - if the user hasn't ... then don't ... -->
+            <!-- explains: useful for form submission as submit button has default action -->
+        </div>
+
+        <script src="app.js"></script>
+    </body>
+</html>

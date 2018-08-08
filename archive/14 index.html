@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <title>Vue Basics</title>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <style>
+            .canvas {
+                width: 300px;
+                height: 300px;
+                margin-top: 20px;
+                background-color: green;
+            };
+        </style>
+    </head>
+    <body>
+    
+        <h1>Vue Basics</h1>
+        <div id="app">
+            <h2>{{ title }}</h2>
+            <p v-if="showName">Mario</p> <!-- If showName === true, then display this element-->
+            <p v-else-if="showAge">25</p> <!-- If showName !== true, then display THIS element; only ever displays if showName is false -->
+            <!-- e.g. show or hide content depending on user login status -->
+            <button @click="toggleName">ShowName: {{ showName }}</button>
+            <button @click="toggleAge">ShowAge: {{ showAge }}</button>
+        </div>
+
+        <script src="app.js"></script>
+    </body>
+</html>

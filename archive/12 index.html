@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <title>Vue Basics</title>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <style>
+            .canvas {
+                width: 300px;
+                height: 300px;
+                margin-top: 20px;
+                background-color: green;
+            };
+        </style>
+    </head>
+    <body>
+    
+        <h1>Vue Basics</h1>
+        <div id="app">
+            <h2>{{ title }}</h2>
+            <p>My name is {{ name }}</p>
+            <input type="text" v-model="name"> <!-- associate with model i.e. data property in vue instance [new Vue] -->
+            <p>My name is {{ name }}</p> <!-- just another instance to prove that all instances update -->
+            <!-- now the value of data becomes whatever you input -->
+            <!-- very useful in forms -->
+        </div>
+
+        <script src="app.js"></script>
+    </body>
+</html>

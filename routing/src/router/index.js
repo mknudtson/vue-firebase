@@ -7,6 +7,8 @@ import ViewProfile from '@/components/ViewProfile' // import the component
 Vue.use(Router) // similar to dragula set-up
 
 export default new Router({
+  mode: 'history',
+  // obscures # in url
   routes: [
     {
       path: '/',

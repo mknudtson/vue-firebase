@@ -71,5 +71,8 @@ li {
     display: inline-block;
     margin: 10px;
 }
+a.router-link-exact-active {
+    color: purple;
+}
 </style>
 

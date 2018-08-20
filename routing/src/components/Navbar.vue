@@ -19,7 +19,14 @@
                     <!-- this has nothing to do with how user profiles are actually loaded so just keep that in mind -->
                 </router-link>
             </li>
-
+        </ul>
+        <h2>Navigation Control</h2>
+        <ul>
+            <li><button @click="goBack">Go Back</button></li>
+            <li><button @click="goHome">Redirect to Home</button></li>
+            <li><button @click="goForward">Go Forward</button></li>
+            <!-- use the vue router to nav to diff pgs programmatically, useful for example after user submits form to programmatically redirect them to the homepage -->
+            <!-- this requires some imagination since all we are doing is clicking on links right now but we are using buttons to simulate form submissions and so on -->
         </ul>
     </nav>
 </template>
@@ -30,6 +37,23 @@ export default {
     data () {
         return {
             userIds: ['1', '2', '3', '4']
+        }
+    },
+    methods: {
+        goHome(){
+            this.$router.push({ name: 'Home' })
+            // not this.$route i.e. current route
+            // router = nav hx
+            // push is a method that pushes passed-in route to nav hx - adds to end of nav hx
+            // name ids route
+        },
+        goBack(){
+            this.$router.go(-1)
+            // go is a method that takes an integer
+        },
+        goForward(){
+            this.$router.go(1)
+            // go is a method that takes an integer
         }
     }
 }
@@ -42,6 +66,10 @@ ul{
 }
 a { /* because router links become anchor tags */
     color: #42b983;
+}
+li {
+    display: inline-block;
+    margin: 10px;
 }
 </style>
 

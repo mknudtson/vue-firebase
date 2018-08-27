@@ -15,22 +15,40 @@
 </template>
 
 <script>
+import db from '@/firebase/init' //  db = init.js file
+
 export default {
   name: 'Index',
   data () {
     return {
-      smoothies: [
-        { title: 'Ninja Brew', slug: 'ninja-brew', ingredients: ['bananas', 'coffee', 'milk'], id: 1 },
-        { title: 'Morning Mood', slug: 'morning-mood', ingredients: ['mango', 'lime', 'juice'], id: 2 }
-      ]
+      smoothies: []
     }
   },
   methods: {
     deleteSmoothie(id) {
-      this.smoothies = this.smoothies.filter(smoothie => { // not permanent deletion because the dummy data is re-rendered to the page every time it is loaded and we are not directly modifying the dummy data, we are filtering it
-        return smoothie.id != id
+      // console.log(id)
+      // delete doc from firestore
+      db.collection('smoothies').doc(id).delete()
+      .then(() => {
+        // delete locally
+        this.smoothies = this.smoothies.filter(smoothie => { // not permanent deletion because the dummy data is re-rendered to the page every time it is loaded and we are not directly modifying the dummy data, we are filtering it
+          return smoothie.id != id
+        })
       })
+
     }
+  },
+  created(){ // when created
+    // fetch data from the firestore
+    db.collection('smoothies').get() // how firebase works
+    .then(snapshot => { // in time of smoothies
+      snapshot.forEach(doc => {
+        let smoothie = doc.data() // to create a local binding
+        smoothie.id = doc.id // to add this property to it
+        this.smoothies.push(smoothie)
+        // console.log(doc.data(), doc.id) // the property we want - remember to execute - plus the doc id (auto-generated)
+      })
+    })
   }
 }
 </script>
